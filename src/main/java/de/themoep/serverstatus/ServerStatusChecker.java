@@ -151,7 +151,7 @@ public class ServerStatusChecker {
             Map<String, String> repl = ImmutableMap.of("server", server.getName());
             String msg = online ? plugin.getMessage("info.online", repl) : plugin.getMessage("info.offline", repl);
 
-            plugin.getLogger().info(msg);
+            ServerStatus.alert(msg);
             for(ProxiedPlayer player : plugin.getProxy().getPlayers()) {
                 if(player.hasPermission(plugin.getDescription().getName() + ".info") && server.canAccess(player)) {
                     player.sendMessage(msg);
